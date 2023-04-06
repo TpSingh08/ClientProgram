@@ -1,4 +1,5 @@
-CLIENT.PY -->
+# CLIENT.PY -->
+
 from socket import *
 serverport = 14750
 servername = "     "
