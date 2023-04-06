@@ -1,0 +1,22 @@
+CLIENT.PY -->
+from socket import *
+serverport = 14750
+servername = "     "
+# create the UDP client socket
+socketClient = socket(AF_INET, SOCK_DGRAM)
+print("Hello from Tarunpal")
+
+while True:
+    # send query to server and get response
+    data = input("Enter the alias name to get domain name and IP address: ")
+    socketClient.sendto(data.encode(), (servername, serverport))
+    serverdata, serveraddress = socketClient.recvfrom(2048)
+    print("Server response: " + serverdata.decode())
+
+    # ask user whether to disconnect from the server
+    data = input("Do you want to discontinue(Y/N): ")
+    if data.upper() == "Y":
+        print("Disconnected from server")
+        break
+# close the client socket
+socketClient.close()
